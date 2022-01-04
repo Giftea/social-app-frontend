@@ -6,6 +6,7 @@ import { userQuery } from '../utils/data';
 import { UserProfile, Sidebar } from "../components";
 import { client } from "../client";
 import Pins from "./Pins";
+import logo from '../assets/logo black.svg'
 
 const Home = () => {
   const [toggleSidebar, setToggleSidebar] = useState(false);
@@ -33,8 +34,7 @@ const Home = () => {
         <div className="p-2 w-full flex flex-row justify-between items-center shadow-md">
           <HiMenu fontSize={40} className="cursor-pointer" onClick={() => setToggleSidebar(true)} />
           <Link to="/">
-            {/* <img src={logo} alt="logo" className="w-28" /> */}
-            <h2>LOGO</h2>
+            <img src={logo} alt="logo" className="w-28" />
           </Link>
           <Link to={`user-profile/${user?._id}`}>
             <img src={user?.image} alt="user-pic" className="w-9 h-9 rounded-full " />
@@ -49,7 +49,7 @@ const Home = () => {
         </div>
         )}
       </div>
-      <div className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
+      <div style={{backgroundColor: '#ebecf0'}} className="pb-2 flex-1 h-screen overflow-y-scroll" ref={scrollRef}>
         <Routes>
           <Route path="/user-profile/:userId" element={<UserProfile />} />
           <Route path="/*" element={<Pins user={user && user} />} />
